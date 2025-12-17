@@ -16,12 +16,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from home import views
-from usuarios import views
+#from home import views
+from home import views as home_views
+#from usuarios import views
+from usuarios import views as usuarios_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home', views.home),
-    path('cadastro/',views.cadastro),
-    path('login/',views.login),
+    
+    # login e cadastro
+    path('', usuarios_views.login),
+    path('login/', usuarios_views.login),
+    path('cadastro/', usuarios_views.cadastro),
+    #path('home', views.home),
+    #path('cadastro/',views.cadastro),
+    #path('login/',views.login),
+    
+    # Home após login
+    path('home/', home_views.home),
+    
 ]
