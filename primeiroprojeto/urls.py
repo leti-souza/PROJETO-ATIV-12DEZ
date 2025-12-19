@@ -28,11 +28,16 @@ urlpatterns = [
     path('', usuarios_views.login),
     path('login/', usuarios_views.login),
     path('cadastro/', usuarios_views.cadastro),
-    #path('home', views.home),
+    #path('home/', views.home),
     #path('cadastro/',views.cadastro),
     #path('login/',views.login),
     
     # Home após login
     path('home/', home_views.home),
-    
+    path('noticias/', home_views.noticias),
+    path('logout/', usuarios_views.logout),
+
 ]
+   
+
+    
