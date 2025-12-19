@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, redirect, render
 from django.http import HttpResponse
 from .models import Usuario
 
@@ -27,13 +27,20 @@ def login(request):
     elif request.method == 'POST':
         email = request.POST.get('email')
         senha = request.POST.get('senha')
-
+        
+         # Verifica se o email existe no banco de dados
         try:
-            Usuario.objects.get(email=email, senha=senha)
-            return render(request, 'home/home.html')
-        #return HttpResponse('Login realizado com sucesso!')
+            usuario = Usuario.objects.get(email=email)
         except Usuario.DoesNotExist:
-            return HttpResponse('Usuário ou senha inválidos')
+             return redirect('/cadastro/') # email não existe → cadastro
+
+        if usuario.senha != senha:
+            return render(request, 'usuarios/login.html',
+                {'erro': 'Senha incorreta.'})
+        
+         # Login correto
+        request.session['email'] = usuario.email
+        return redirect('/home/')
 
 def logout(request):
     request.session.flush()  # limpa a sessão
