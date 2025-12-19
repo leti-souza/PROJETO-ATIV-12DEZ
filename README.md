@@ -1,4 +1,4 @@
-# Nesta atividade foram realizadas os seguintes requisitos:
+# Nesta atividade foram realizados os seguintes requisitos:
 
 
 - A equipe de Interface Web iniciou o projeto Django e estruturou as páginas iniciais do sistema, incluindo telas de login, cadastro e página inicial. Foi implementado um sistema de autenticação simples utilizando Django e -SQLite para controle básico de acesso. O site encontra-se funcional e acessível via navegador, atendendo aos requisitos mínimos da etapa.
